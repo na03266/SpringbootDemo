@@ -13,7 +13,7 @@ public class BlogService {
 
     private final BlogRepository blogRepository;
 
-    private Article save(AddArticleRequest request){
+    public Article save(AddArticleRequest request){
         return blogRepository.save(request.toEntity());
     }
 
