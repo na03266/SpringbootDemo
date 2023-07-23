@@ -31,7 +31,7 @@ public class BlogApiController {
                 .body(saveArticle);
     }
 
-    @GetMapping
+    @GetMapping("/api/articles")
     public ResponseEntity<List<ArticleResponse>> findAllArticle(){ // 글을 조회한 뒤 반환
         List<ArticleResponse> articles = blogService.findAll()
                 .stream()
