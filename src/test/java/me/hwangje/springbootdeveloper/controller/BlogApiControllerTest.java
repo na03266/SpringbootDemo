@@ -93,6 +93,7 @@ class BlogApiControllerTest {
         final ResultActions resultActions = mockMvc.perform(get(url)
                 .accept(MediaType.APPLICATION_JSON));
 
+
         //then 응답 코드가 200 ok 이고 반환값중 0번째 요소의 컨텐츠와 타이틀에 저장된 값이 같은지 확인
         resultActions
                 .andExpect(status().isOk())
