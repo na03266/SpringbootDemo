@@ -2,6 +2,7 @@ plugins { // 스프링부트 플러그인, 의존성 자동 관리
     id 'java'
     id 'org.springframework.boot' version '3.0.2'
     id 'io.spring.dependency-management' version '1.1.0'
+
 }
 
 group = 'me.hwangje' //지정한 그룹 이름, 버전, 자바 버전
@@ -14,11 +15,17 @@ repositories { //의존성을 받을 저장소
 
 dependencies { //의존성
     implementation 'org.springframework.boot:spring-boot-starter-web'
+
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'//웹
     runtimeOnly 'com.h2database:h2' // 인메모리 데이터페이스
+
     compileOnly 'org.projectlombok:lombok' //롬복
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
     annotationProcessor 'org.projectlombok:lombok'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test' //테스트
+
 }
 
 test {
