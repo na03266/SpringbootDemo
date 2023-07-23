@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import me.hwangje.springbootdeveloper.domain.Article;
 import me.hwangje.springbootdeveloper.dto.AddArticleRequest;
 import me.hwangje.springbootdeveloper.repository.BlogRepository;
-import org.hibernate.annotations.DynamicInsert;
 import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor // final 이 붙거나 @NotNull이 붙은 필드의 생성자 추가
