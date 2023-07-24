@@ -3,6 +3,7 @@ package me.hwangje.springbootdeveloper.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import me.hwangje.springbootdeveloper.domain.Article;
 import me.hwangje.springbootdeveloper.dto.AddArticleRequest;
+import me.hwangje.springbootdeveloper.dto.ArticleResponse;
 import me.hwangje.springbootdeveloper.repository.BlogRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -11,9 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.util.List;
@@ -101,4 +106,28 @@ class BlogApiControllerTest {
                 .andExpect(jsonPath("$[0].title").value(title));
 
     }
-}
+
+    @DisplayName("findArticle: 글 조회에 성공한다.")
+    @Test
+    public void findArticle() throws Exception{
+        //given 블로그 글 저장
+        final String url = "/api/article/{id}";
+        final String title = "title";
+        final String content = "content";
+
+        Article saveArticle = blogRepository.save(Article.builder()
+                .title(title)
+                .content(content)
+                .build());
+
+        //when 저장한 블로그 글의 id 값으로 API 호춯
+        final ResultActions resultActions = mockMvc.perform(get(url, saveArticle.getId()));
+
+        //then 응답코드가 200ok 이고, 반환값이 일치하는지 확인
+        resultActions
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.content").value(content))
+                .andExpect(jsonPath("$.title").value(title));
+
+        }
+    }
