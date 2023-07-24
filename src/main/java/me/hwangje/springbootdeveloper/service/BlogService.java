@@ -1,8 +1,10 @@
 package me.hwangje.springbootdeveloper.service;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import me.hwangje.springbootdeveloper.domain.Article;
 import me.hwangje.springbootdeveloper.dto.AddArticleRequest;
+import me.hwangje.springbootdeveloper.dto.UpdateArticleRequest;
 import me.hwangje.springbootdeveloper.repository.BlogRepository;
 import org.springframework.stereotype.Service;
 
@@ -31,4 +33,13 @@ public class BlogService {
         blogRepository.deleteById(id);
     }
 
+    @Transactional //트랜잭션 메서드
+    public Article update(long id, UpdateArticleRequest request){
+        Article article = blogRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("not found: " +id));
+
+        article.update(request.getTitle(), request.getContent());
+
+        return article;
+    }
 }

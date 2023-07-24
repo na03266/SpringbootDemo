@@ -1,6 +1,7 @@
 package me.hwangje.springbootdeveloper.domain;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +10,7 @@ import static lombok.AccessLevel.PROTECTED;
 
 @Entity //엔티티로 지정
 @Getter
-@NoArgsConstructor(access = PROTECTED)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Article {
 
     @Id // id 필드를 기본으로 지정
@@ -28,6 +29,11 @@ public class Article {
     빌더 패턴을 이용하면 각 객체가 어디에 들어가는지 파악하기 쉬움
      */
     public Article(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
+
+    public void update(String title, String content) {
         this.title = title;
         this.content = content;
     }
