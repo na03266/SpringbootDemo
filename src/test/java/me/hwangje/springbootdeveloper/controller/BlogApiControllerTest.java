@@ -105,7 +105,7 @@ class BlogApiControllerTest {
     @Test
     public void findArticle() throws Exception{
         //given 블로그 글 저장
-        final String url = "/api/article/{id}";
+        final String url = "/api/articles/{id}";
         final String title = "title";
         final String content = "content";
 
