@@ -27,12 +27,13 @@ public class ExampleController {
         return "example"; // example.html 라는 뷰 조회
     }
 
-    @Setter
-    @Getter
-    class Person {
-        private Long id;
-        private String name;
-        private int age;
-        private List<String> hobbies;
-    }
+}
+
+@Setter
+@Getter
+class Person {
+    private Long id;
+    private String name;
+    private int age;
+    private List<String> hobbies;
 }

@@ -7,7 +7,7 @@
 <body>
 <h1>타임리프 익히기</h1>
 <!-- LocalData를 yyyy-MM-dd 포멧으로 변경-->
-<p th:text="${temporals.format(today, 'yyyy-MM-dd')}"></p>
+<p th:text="${#temporals.format(today, 'yyyy-MM-dd')}"></p>
 <div th:object="${person}"><!--person을 선택한 객체로 지정-->
     <p th:text="|이름 : *{name}|"></p>
     <p th:text="|나이 : *{age}|"></p>
