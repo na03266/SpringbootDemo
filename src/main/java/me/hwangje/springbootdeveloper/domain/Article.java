@@ -5,6 +5,11 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import static lombok.AccessLevel.PROTECTED;
 
@@ -37,4 +42,13 @@ public class Article {
         this.title = title;
         this.content = content;
     }
+
+    @CreatedDate //앤티티가 생성될때, 생성 시간 지정
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
+    @LastModifiedDate //앤티티가 수정될 때 수정 시간 저장
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
+
 }
