@@ -12,7 +12,11 @@
 </div>
 
 <div class="container">
-    <div class = "row-6" th:each="item:${articles}">
+    <button type="button" id="create-btn"
+            th:onclick="|location.href='@{/new-article}'|"
+            class="btn btn-secondary btn-sm mb-3">글 등록</button>
+
+    <div class = "row-6" th:each="item:${articles}"> <!-- article 개수만큼 반복-->
         <div class="card">
             <div class="card-header" th:text="${item.id}">
             </div>
