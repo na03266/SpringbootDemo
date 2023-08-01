@@ -12,7 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
-@Table(name = "user")
+@Table(name = "users")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
@@ -42,7 +42,7 @@ public class User implements UserDetails { //UserDetails를 상속받아 인증 
 
     //사용자의 id 를 반환(고유한 값)
     @Override
-    public String getUsertname(){
+    public String getUsername(){
         return email;
     }
     @Override
@@ -59,14 +59,14 @@ public class User implements UserDetails { //UserDetails를 상속받아 인증 
 
     //계정 잠금 여부 반환
     @Override
-    public boolean isAccountNoLock(){
+    public boolean isAccountNonLocked(){
         //잠금되었는지 확인하는 로직
         return true; //true -> 잠금되지 않았음
     }
 
     //패스워드 만료 여부 반환
     @Override
-    public boolean isAccountNoLock(){
+    public boolean isCredentialsNonExpired(){
         //패스워드가 만료 되었는지 확인하는 로직
         return true; //true -> 잠금되지 않았음
     }
@@ -75,6 +75,6 @@ public class User implements UserDetails { //UserDetails를 상속받아 인증 
     @Override
     public boolean isEnabled(){
         // 계정이 사용 가능한지 확인하는 로직
-        return true // true -> 사용 가능
+        return true; // true -> 사용 가능
     }
 }
