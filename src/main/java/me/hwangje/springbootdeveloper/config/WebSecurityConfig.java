@@ -52,7 +52,7 @@ public class WebSecurityConfig {
     public AuthenticationManager authenticationManager(HttpSecurity http,
     BCryptPasswordEncoder bCryptPasswordEncoder, UserDetailsService userDetailsService)
             throws Exception {
-        return http.getSharedObject((AuthenticationManagerBuilder.class)
+        return http.getSharedObject(AuthenticationManagerBuilder.class)
                 .userDetailsService(userService) //사용자 정보 서비스 설정
                 .passwordEncoder(bCryptPasswordEncoder)
                 .and()
