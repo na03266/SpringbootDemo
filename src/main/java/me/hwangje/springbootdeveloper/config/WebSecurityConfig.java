@@ -1,6 +1,7 @@
 package me.hwangje.springbootdeveloper.config;
 
 import lombok.RequiredArgsConstructor;
+import me.hwangje.springbootdeveloper.service.UserDetailService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -50,7 +51,7 @@ public class WebSecurityConfig {
     //인증 관리자 관련 설정
     @Bean
     public AuthenticationManager authenticationManager(HttpSecurity http,
-    BCryptPasswordEncoder bCryptPasswordEncoder, UserDetailsService userDetailsService)
+    BCryptPasswordEncoder bCryptPasswordEncoder, UserDetailService userDetailService)
             throws Exception {
         return http.getSharedObject(AuthenticationManagerBuilder.class)
                 .userDetailsService(userService) //사용자 정보 서비스 설정
