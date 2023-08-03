@@ -1,6 +1,7 @@
 package me.hwangje.springbootdeveloper.config.jwt;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Header;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.RequiredArgsConstructor;
@@ -8,7 +9,6 @@ import me.hwangje.springbootdeveloper.domain.User;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.web.header.Header;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
@@ -32,10 +32,10 @@ public class TokenProvider {
         Date now = new Date();
 
         return Jwts.builder()
-                .setHeaderParam(Header.TYPE, Header.JWT_TYPE) //헤더 typ : JWT
+                .setHeaderParam(io.jsonwebtoken.Header.TYPE, Header.JWT_TYPE) //헤더 typ : JWT
                 //내용 iss : ajufresh@gamil.com(propertise 파일에서 설정한 값)
                 .setIssuer(jwtProperties.getIssuer())
-                .setIssuerAt(now) //내용 iat : 현재 시간
+                .setIssuedAt(now) //내용 iat : 현재 시간
                 .setExpiration(expiry) //내용 exp : expiry 멤버 변수값
                 .setSubject(user.getEmail()) //내용 sub : 유저의 이메일
                 .claim("id", user.getId()) // 클레임 id : 유저 ID
