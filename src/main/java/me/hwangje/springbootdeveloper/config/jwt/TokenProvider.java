@@ -33,7 +33,7 @@ public class TokenProvider {
 
         return Jwts.builder()
                 .setHeaderParam(Header.TYPE, Header.JWT_TYPE) //헤더 typ : JWT
-                //내용 iss : ajufresh@gamil.com(propertise 파일에서 설정한 값)
+                //내용 iss : ajufresh@gamil.com(properties 파일에서 설정한 값)
                 .setIssuer(jwtProperties.getIssuer())
                 .setIssuedAt(now) //내용 iat : 현재 시간
                 .setExpiration(expiry) //내용 exp : expiry 멤버 변수값
