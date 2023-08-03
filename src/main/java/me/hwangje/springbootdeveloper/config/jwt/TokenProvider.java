@@ -32,7 +32,7 @@ public class TokenProvider {
         Date now = new Date();
 
         return Jwts.builder()
-                .setHeaderParam(io.jsonwebtoken.Header.TYPE, Header.JWT_TYPE) //헤더 typ : JWT
+                .setHeaderParam(Header.TYPE, Header.JWT_TYPE) //헤더 typ : JWT
                 //내용 iss : ajufresh@gamil.com(propertise 파일에서 설정한 값)
                 .setIssuer(jwtProperties.getIssuer())
                 .setIssuedAt(now) //내용 iat : 현재 시간
