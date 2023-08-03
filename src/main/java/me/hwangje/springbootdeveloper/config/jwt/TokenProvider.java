@@ -1,8 +1,8 @@
 package me.hwangje.springbootdeveloper.config.jwt;
 
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwt;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.RequiredArgsConstructor;
 import me.hwangje.springbootdeveloper.domain.User;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -40,7 +40,7 @@ public class TokenProvider {
                 .setSubject(user.getEmail()) //내용 sub : 유저의 이메일
                 .claim("id", user.getId()) // 클레임 id : 유저 ID
                 // 서명: 비밀 값과 함께 해시 값을 HS256 방식으로 암호화
-                .signWith(SingnatureAlgorithm.HS256, jwtProperties.getSecretKey())
+                .signWith(SignatureAlgorithm.HS256, jwtProperties.getSecretKey())
                 .compact();
     }
 
