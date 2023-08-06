@@ -46,7 +46,8 @@ dependencies { //의존성
 
     implementation 'javax.xml.bind:jaxb-api:2.3.1' //XML 문서와 Java 객체 간 매핑 자동화
 
-
+    // OAuth2를 사용하기 위한 스타터 추가
+    implementation 'org.springframework.book:spring-boot-starter-oauth2-client'
 }
 
 test {
