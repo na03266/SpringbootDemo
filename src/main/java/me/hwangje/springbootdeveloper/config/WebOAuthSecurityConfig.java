@@ -45,6 +45,25 @@ public class WebOAuthSecurityConfig {
         http.addFilterBefore(tokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 
         //토큰 재발급 URL은 인증 없이 접근 가능하도록 설정, 나머지 API URL은 인증 필요
-        http
+        http.authorizeRequests()
+                .requestMatchers("/api/token").permitAll()
+                .requestMatchers("/api/**").authenticated()
+                .anyRequest().permitAll();
+
+        http.oauth2Login()
+                .loginPage("/login")
+                .authorizationEndpoint()
+                // Authorization 요청과 관련된 상태 저장
+                .authorizationRequestRepository(oAuth2AuthorizationRequestBasedOnCookieRepository())
+                .and()
+                .successHandler(oAuth2SuccessHandler())
+                .userInfoEndpoint()
+                .userService(oAuth2UserCustomService);
+
+        http.logout()
+                .logoutSuccessUrl("/login");
+
+        // /api로 시작하는 url인 경우 401 코드를 반환하도록 예외 처리
+
     }
 }
