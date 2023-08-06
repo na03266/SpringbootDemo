@@ -30,7 +30,7 @@ public class UserService {
     }
 
     public User findByEmail(String email){
-        return userRepository.findByEmail(email)
+        return userRepository.findByEmail(email) //OAuth2에서 제공하는 이메일은 유일 값이므로 이 메서드로  유저 검색 가능
                 .orElseThrow(() ->new IllegalArgumentException("Unexpected user"));
     }
 }
