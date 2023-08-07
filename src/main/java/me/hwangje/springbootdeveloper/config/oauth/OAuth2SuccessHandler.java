@@ -10,6 +10,7 @@ import me.hwangje.springbootdeveloper.repository.RefreshTokenRepository;
 import me.hwangje.springbootdeveloper.service.UserService;
 import me.hwangje.springbootdeveloper.util.CookieUtil;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -33,7 +34,7 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
                                         Authentication authentication) throws IOException{
-        OAuthUser oAuthUser = (OAuth2User) authentication.getPrincipal();
+        OAuth2User oAuthUser = (OAuth2User) authentication.getPrincipal();
         User user = userService.findByEmail((String) oAuthUser.getAttributes().get("email"));
 
         //리프레시 토큰 생성 -> 저장 -> 쿠키에 저장

@@ -1,10 +1,10 @@
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import me.hwangje.springbootdeveloper.util.CookieUtil;
 import org.springframework.security.oauth2.client.web.AuthorizationRequestRepository;
 import org.springframework.security.oauth2.core.endpoint.OAuth2AuthorizationRequest;
 import org.springframework.web.util.WebUtils;
+import me.hwangje.springbootdeveloper.util.CookieUtil; // CookieUtil import 추가
 
 public class OAuth2AuthorizationRequestBasedOnCookieRepository implements
         AuthorizationRequestRepository<OAuth2AuthorizationRequest> {

@@ -2,6 +2,7 @@ package me.hwangje.springbootdeveloper.config;
 
 import lombok.RequiredArgsConstructor;
 import me.hwangje.springbootdeveloper.config.jwt.TokenProvider;
+import me.hwangje.springbootdeveloper.config.oauth.OAuth2SuccessHandler;
 import me.hwangje.springbootdeveloper.config.oauth.OAuth2UserCustomService;
 import me.hwangje.springbootdeveloper.repository.RefreshTokenRepository;
 import me.hwangje.springbootdeveloper.service.UserService;
@@ -58,7 +59,7 @@ public class WebOAuthSecurityConfig {
                 .loginPage("/login")
                 .authorizationEndpoint()
                 // Authorization 요청과 관련된 상태 저장
-                .authorizationRequestRepository(oAuth2AuthorizationRequestBasedOnCookieRepository())
+                .authorizationRequestRepository(oAuth2AuthorizationRequestBasedOnCookieRepository)
                 .and()
                 .successHandler(oAuth2SuccessHandler())
                 .userInfoEndpoint()
