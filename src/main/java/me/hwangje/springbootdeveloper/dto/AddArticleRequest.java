@@ -13,13 +13,13 @@ public class AddArticleRequest {
 
     private String title;
     private String content;
-    private String author;
 
-    public Article toEntity(){ //생성자를 사용해 객체 생성
+    public Article toEntity(String author){ //생성자를 사용해 객체 생성
         return Article.builder()
                 .title(title)
                 .content(content)
                 .author(author)
                 .build();
     }
+
 }
