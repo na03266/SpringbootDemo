@@ -59,7 +59,7 @@ public class WebOAuthSecurityConfig {
                 .loginPage("/login")
                 .authorizationEndpoint()
                 // Authorization 요청과 관련된 상태 저장
-                .authorizationRequestRepository(oAuth2AuthorizationRequestBasedOnCookieRepository)
+                .authorizationRequestRepository(oAuth2AuthorizationRequestBasedOnCookieRepository())
                 .and()
                 .successHandler(oAuth2SuccessHandler())
                 .userInfoEndpoint()
@@ -77,7 +77,8 @@ public class WebOAuthSecurityConfig {
 
     @Bean
     public OAuth2SuccessHandler oAuth2SuccessHandler(){
-        return new OAuth2SuccessHandler(tokenProvider, refreshTokenRepository, oAuth2AuthorizationRequestBasedOnCookieRepository(),
+        return new OAuth2SuccessHandler(tokenProvider, refreshTokenRepository,
+                oAuth2AuthorizationRequestBasedOnCookieRepository(),
                 userService
         );
     }
