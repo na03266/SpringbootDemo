@@ -1,3 +1,5 @@
+package me.hwangje.springbootdeveloper.config.oauth;
+
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

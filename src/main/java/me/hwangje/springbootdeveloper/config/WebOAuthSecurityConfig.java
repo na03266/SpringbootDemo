@@ -2,6 +2,7 @@ package me.hwangje.springbootdeveloper.config;
 
 import lombok.RequiredArgsConstructor;
 import me.hwangje.springbootdeveloper.config.jwt.TokenProvider;
+import me.hwangje.springbootdeveloper.config.oauth.OAuth2AuthorizationRequestBasedOnCookieRepository;
 import me.hwangje.springbootdeveloper.config.oauth.OAuth2SuccessHandler;
 import me.hwangje.springbootdeveloper.config.oauth.OAuth2UserCustomService;
 import me.hwangje.springbootdeveloper.repository.RefreshTokenRepository;
