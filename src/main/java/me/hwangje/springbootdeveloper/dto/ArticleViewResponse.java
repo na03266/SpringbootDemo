@@ -10,15 +10,18 @@ import java.time.LocalDateTime;
 @Getter
 public class ArticleViewResponse {
 
+
     private Long id;
     private String title;
     private String content;
     private LocalDateTime createdAt;
+    private String author;
 
     public ArticleViewResponse(Article article){
         this.id = article.getId();
         this.content = article.getContent();
         this.title = article.getTitle();
         this.createdAt = article.getCreatedAt();
+        this.author = article.getAuthor();
     }
 }
