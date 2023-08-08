@@ -24,7 +24,7 @@ public class CookieUtil {
             return;
         }
 
-        for (Cookie cookie: cookies){
+        for (Cookie cookie : cookies){
             if (name.equals(cookie.getName())){
                 cookie.setValue("");
                 cookie.setPath("/");
@@ -36,7 +36,7 @@ public class CookieUtil {
 
     //객체를 직렬화해 쿠키의 값으로 변환
     public static String serialize(Object obj){
-        return Base64.getEncoder()
+        return Base64.getUrlEncoder()
                 .encodeToString(SerializationUtils.serialize(obj));
     }
 
