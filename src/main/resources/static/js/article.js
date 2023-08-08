@@ -46,7 +46,7 @@ if (modifyButton) {
 
 }
 
-//등록 기능
+//생성 기능
 // id가 create-btn인 엘리먼트
 const createButton = document.getElementById("cteate-btn")
 
