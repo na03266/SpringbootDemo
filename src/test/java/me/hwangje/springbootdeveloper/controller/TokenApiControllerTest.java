@@ -7,7 +7,7 @@ import me.hwangje.springbootdeveloper.domain.RefreshToken;
 import me.hwangje.springbootdeveloper.domain.User;
 import me.hwangje.springbootdeveloper.dto.CreateAccessTokenRequest;
 import me.hwangje.springbootdeveloper.repository.RefreshTokenRepository;
-import me.hwangje.springbootdeveloper.repository.UserRepositary;
+import me.hwangje.springbootdeveloper.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,7 +16,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MockMvcBuilder;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
@@ -39,7 +38,7 @@ class TokenApiControllerTest {
     @Autowired
     JwtProperties jwtProperties;
     @Autowired
-    UserRepositary userRepositary;
+    UserRepository userRepositary;
     @Autowired
     RefreshTokenRepository refreshTokenRepository;
     

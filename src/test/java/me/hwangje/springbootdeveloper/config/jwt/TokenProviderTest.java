@@ -2,7 +2,7 @@ package me.hwangje.springbootdeveloper.config.jwt;
 
 import io.jsonwebtoken.Jwts;
 import me.hwangje.springbootdeveloper.domain.User;
-import me.hwangje.springbootdeveloper.repository.UserRepositary;
+import me.hwangje.springbootdeveloper.repository.UserRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ public class TokenProviderTest {
     @Autowired
     private TokenProvider tokenProvider;
     @Autowired
-    private UserRepositary userRepositary;
+    private UserRepository userRepositary;
     @Autowired
     private JwtProperties jwtProperties;
 
