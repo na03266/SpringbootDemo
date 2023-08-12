@@ -20,7 +20,7 @@ dependencies { //의존성
 
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf' //타임리프
 
-    runtimeOnly 'com.h2database:h2' // 인메모리 데이터페이스
+    runtimeOnly 'com.h2database:h2' // 인메모리 데이터베이스
 
     compileOnly 'org.projectlombok:lombok' //롬복
 
@@ -51,12 +51,9 @@ dependencies { //의존성
 
     //mysql의존성 추가
     implementation 'mysql:mysql-connector-java'
+
 }
 
 test {
     useJUnitPlatform()
-}
-
-jar{
-    enabled = false
 }
