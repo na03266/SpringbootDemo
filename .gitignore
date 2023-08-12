@@ -12,10 +12,11 @@ build/
 *.iws
 *.iml
 *.ipr
-*.yml
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
+application.yml
+
 
 
 ### Eclipse ###
