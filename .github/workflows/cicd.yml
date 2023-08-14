@@ -40,8 +40,8 @@ jobs:
       - name: Beanstalk Deploy
         uses: einaregilsson/beanstalk-deoloy@v20
         with:
-          aws_access_key: ${{ }}
-          aws_secret_key: ${{ }}
+          aws_access_key: ${{ AKIAZ22LMDMMEBXR6EUX }}
+          aws_secret_key: ${{ 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 }}
           application_name: springboot-developer
           environment_name: springboot-developer-env
           version_label: github-action-${{step.current-time.outputs.formattedTime}}
