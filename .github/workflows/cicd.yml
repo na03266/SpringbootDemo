@@ -38,7 +38,7 @@ jobs:
 
       # 빈스토크 배포
       - name: Beanstalk Deploy
-        uses: einaregilsson/beanstalk-deoloy@v20
+        uses: einaregilsson/beanstalk-deploy@v20
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
           aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
