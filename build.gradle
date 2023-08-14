@@ -57,3 +57,7 @@ dependencies { //의존성
 test {
     useJUnitPlatform()
 }
+
+jar{
+    enabled = false
+}
