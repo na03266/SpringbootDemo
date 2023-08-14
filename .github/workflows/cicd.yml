@@ -11,9 +11,9 @@ jobs:
     runs-on: ubuntu-latest #실행환경 지정
     #실행 스텝 지정
     steps:
-      - uses: action/checkout@v3
+      - uses: actions/checkout@v3
 
-      - uses: action/setup-java@v3
+      - uses: actions/setup-java@v3
         with:
           distribution: 'correntto'
           java-version: '17'
@@ -44,6 +44,6 @@ jobs:
           aws_secret_key: ${{ 54Gp8aLgiwYccfgdgJ1DaTLnptdNzWeRSk31YpQP }}
           application_name: springboot-developer
           environment_name: springboot-developer-env
-          version_label: github-action-${{step.current-time.outputs.formattedTime}}
+          version_label: github-action-${{ step.current-time.outputs.formattedTime }}
           region: ap-northeast-2
-          deployment_package: ./build/libs/${{env.artifact}}
+          deployment_package: ./build/libs/${{ env.artifact }}
