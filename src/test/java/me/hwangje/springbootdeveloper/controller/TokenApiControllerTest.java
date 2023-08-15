@@ -38,7 +38,7 @@ class TokenApiControllerTest {
     @Autowired
     JwtProperties jwtProperties;
     @Autowired
-    UserRepository userRepositary;
+    UserRepository userRepository;
     @Autowired
     RefreshTokenRepository refreshTokenRepository;
     
@@ -46,7 +46,7 @@ class TokenApiControllerTest {
     public void MockSetUp(){
         this.mockMvc = MockMvcBuilders.webAppContextSetup(context)
                 .build();
-        userRepositary.deleteAll();
+        userRepository.deleteAll();
     }
     
     @DisplayName("createNewAccessToken : 새로운 액세스 토큰을 발급한다.")
@@ -56,7 +56,7 @@ class TokenApiControllerTest {
         // 토큰 생성 api의 요청 본문에 리프레시 토큰을 포함하여 요청 객체를 생성
         final String url = "/api/token";
 
-        User testUser = userRepositary.save(User.builder()
+        User testUser = userRepository.save(User.builder()
                 .email("user@gmail.com")
                 .password("test")
                 .build());
