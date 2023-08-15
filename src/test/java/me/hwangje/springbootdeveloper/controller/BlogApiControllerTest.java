@@ -1,6 +1,7 @@
 package me.hwangje.springbootdeveloper.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.javafaker.Faker;
 import me.hwangje.springbootdeveloper.domain.Article;
 import me.hwangje.springbootdeveloper.domain.User;
 import me.hwangje.springbootdeveloper.dto.AddArticleRequest;
@@ -26,10 +27,14 @@ import org.springframework.web.context.WebApplicationContext;
 import java.security.Principal;
 import java.util.List;
 
-import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -198,7 +203,7 @@ class BlogApiControllerTest {
 
         final String requestBody = objectMapper.writeValueAsString(userRequest);
 
-        Principal principal = Mockito.mock(principal.class);
+        Principal principal = Mockito.mock(Principal.class);
         Mockito.when(principal.getName()).thenReturn("username");
 
         //when
@@ -211,6 +216,32 @@ class BlogApiControllerTest {
         result.andExpect(status().isBadRequest());
     }
 
+
+    @DisplayName("addArticle: 글 추가시 제목이 10자를 넘으면 실패한다.")
+    @Test
+    public void addArticleSizeValidation() throws Exception {
+        // given
+        Faker faker = new Faker();
+
+        final String url = "/api/articles";
+        final String title = faker.lorem().characters(11);
+        final String content = "content";
+        final AddArticleRequest userRequest = new AddArticleRequest(title, content);
+
+        final String requestBody = objectMapper.writeValueAsString(userRequest);
+
+        Principal principal = Mockito.mock(Principal.class);
+        Mockito.when(principal.getName()).thenReturn("username");
+
+        // when
+        ResultActions result = mockMvc.perform(post(url)
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .principal(principal)
+                .content(requestBody));
+
+        // then
+        result.andExpect(status().isBadRequest());
+    }
 
 
     private Article createDefaultArticle() {
