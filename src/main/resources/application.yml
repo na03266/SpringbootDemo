@@ -1,9 +1,8 @@
 spring:
   jpa:
     show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
+    hibernate:
+      format_sql: true
     defer-datasource-initialization: true
   datasource:
     url: jdbc:h2:mem:testdb
@@ -11,9 +10,19 @@ spring:
   h2:
     console:
       enabled: true
-  config:
-    import: classpath:application-google.yml
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${google.client-id}
+            client-secret: ${google.client-secret}
+            scope:
+              - email
+              - profile
+  profiles:
+    active: google
+
 jwt:
   issuer: ajufresh@gmail.com
   secret_key: study-springboot
-
