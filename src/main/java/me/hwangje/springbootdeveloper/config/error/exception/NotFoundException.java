@@ -8,6 +8,6 @@ public class NotFoundException extends BusinessBaseException{
     }
 
     public NotFoundException(){
-        super(ErrorCode.ARTICLE_NOT_FOUND);
+        super(ErrorCode.NOT_FOUND);
     }
 }
