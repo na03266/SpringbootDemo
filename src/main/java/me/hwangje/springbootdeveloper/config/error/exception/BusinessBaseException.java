@@ -5,6 +5,7 @@ import me.hwangje.springbootdeveloper.config.error.ErrorCode;
 public class BusinessBaseException {
 
     public class CustomBaseException extends RuntimeException{
+
         private final ErrorCode errorCode;
 
         public CustomBaseException(String message, ErrorCode errorCode) {
