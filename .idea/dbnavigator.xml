@@ -12,31 +12,32 @@
     <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="12bed0c5-1ffa-4f8c-b7a2-166864b021fb">
-      <console name="Connection" type="STANDARD" schema="ebdb" session="Main"><![CDATA[drop database blog;]]></console>
-      <console name="Connection 1" type="STANDARD" schema="blog" session="Main"><![CDATA[use blog;
+    <connection id="93ae8a0e-fefa-48e8-9e84-03493f424181">
+      <console name="springboot" type="STANDARD" schema="ebdb" session="Main" />
+      <console name="springboot 1" type="STANDARD" schema="blog" session="Main"><![CDATA[create database blog;
 
-create table article(
+use blog;
+
+create table article (
     id bigint not null AUTO_INCREMENT,
     author varchar(255) not null,
-    content varchar(255) not null ,
+    content varchar(255) not null,
+    title varchar(255) not null,
     created_at timestamp,
-    title varchar(255) not null ,
     updated_at timestamp,
     primary key (id)
 );
 
 create table refresh_token (
     id bigint not null AUTO_INCREMENT,
-    refresh_token varchar(255) not null ,
-    user_id bigint not null ,
+    refresh_token varchar(255) not null,
+    updated_at timestamp,
     primary key (id)
 );
 
-create table users(
+create table users (
     id bigint not null AUTO_INCREMENT,
-    created_at timestamp,
-    email varchar(255) not null ,
+    email varchar(255) not null,
     nickname varchar(255),
     password varchar(255),
     updated_at timestamp,
@@ -53,18 +54,28 @@ create table users(
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />
   </component>
+  <component name="DBNavigator.Project.MethodExecutionManager">
+    <method-browser />
+    <execution-history>
+      <group-entries value="true" />
+      <execution-inputs />
+    </execution-history>
+    <argument-values-cache />
+  </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
     <last-used-operator value="EQUAL" />
     <filters />
   </component>
   <component name="DBNavigator.Project.ScriptExecutionManager" clear-outputs="true">
-    <recently-used-interfaces />
+    <recently-used-interfaces>
+      <mapping database-type="MYSQL" interface-id="DEFAULT" />
+    </recently-used-interfaces>
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="12bed0c5-1ffa-4f8c-b7a2-166864b021fb" active="true" signed="true">
+      <connection id="93ae8a0e-fefa-48e8-9e84-03493f424181" active="true" signed="true">
         <database>
-          <name value="Connection" />
+          <name value="springboot" />
           <description value="" />
           <database-type value="MYSQL" />
           <config-type value="BASIC" />
@@ -73,7 +84,7 @@ create table users(
           <driver-library value="" />
           <driver value="" />
           <url-type value="DATABASE" />
-          <host value="awseb-e-4ima5enbih-stack-awsebrdsdatabase-bvhkoxpxkrlg.cvp4zncfowfh.ap-northeast-2.rds.amazonaws.com" />
+          <host value="awseb-e-dsrbgbqq37-stack-awsebrdsdatabase-0829pb6gcorg.c8ohvldijdzu.ap-northeast-2.rds.amazonaws.com" />
           <port value="3306" />
           <database value="ebdb" />
           <tns-folder value="" />
@@ -83,7 +94,7 @@ create table users(
           <deprecated-pwd value="bmhqNDg2MTUz" />
         </database>
         <properties>
-          <auto-commit value="false" />
+          <auto-commit value="true" />
         </properties>
         <ssh-settings>
           <active value="false" />
